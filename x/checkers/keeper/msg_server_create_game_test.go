@@ -53,3 +53,26 @@ func setupMsgServerCreateGame(t testing.TB) (types.MsgServer, keeper.Keeper, con
 	checkers.InitGenesis(ctx, *k, *types.DefaultGenesis())
 	return keeper.NewMsgServerImpl(*k), *k, sdk.WrapSDKContext(ctx)
 }
+
+func TestCreate1GameEmitted(t *testing.T) {
+	msgSrvr, _, context := setupMsgServerCreateGame(t)
+	msgSrvr.CreateGame(context, &types.MsgCreateGame{
+		Creator: testutil.Alice,
+		Black:   testutil.Bob,
+		Red:     testutil.Carol,
+	})
+	ctx := sdk.UnwrapSDKContext(context)
+	require.NotNil(t, ctx)
+	events := sdk.StringifyEvents(ctx.EventManager().ABCIEvents())
+	require.Len(t, events, 1)
+	event := events[0]
+	require.EqualValues(t, sdk.StringEvent{
+		Type: "new-game-created",
+		Attributes: []sdk.Attribute{
+			{Key: "creator", Value: testutil.Alice},
+			{Key: "game-index", Value: "1"},
+			{Key: "black", Value: testutil.Bob},
+			{Key: "red", Value: testutil.Carol},
+		},
+	}, event)
+}

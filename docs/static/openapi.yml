@@ -65,6 +65,9 @@ paths:
                       type: string
                     red:
                       type: string
+                    moveCount:
+                      type: string
+                      format: uint64
               pagination:
                 type: object
                 properties:
@@ -192,6 +195,9 @@ paths:
                     type: string
                   red:
                     type: string
+                  moveCount:
+                    type: string
+                    format: uint64
         default:
           description: An unexpected error response.
           schema:
@@ -30778,6 +30784,8 @@ definitions:
         format: int32
       winner:
         type: string
+  alice.checkers.checkers.MsgRejectGameResponse:
+    type: object
   alice.checkers.checkers.Params:
     type: object
     description: Params defines the parameters for the module.
@@ -30799,6 +30807,9 @@ definitions:
               type: string
             red:
               type: string
+            moveCount:
+              type: string
+              format: uint64
       pagination:
         type: object
         properties:
@@ -30840,6 +30851,9 @@ definitions:
             type: string
           red:
             type: string
+          moveCount:
+            type: string
+            format: uint64
   alice.checkers.checkers.QueryGetSystemInfoResponse:
     type: object
     properties:
@@ -30869,6 +30883,9 @@ definitions:
         type: string
       red:
         type: string
+      moveCount:
+        type: string
+        format: uint64
   alice.checkers.checkers.SystemInfo:
     type: object
     properties:
