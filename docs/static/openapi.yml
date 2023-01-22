@@ -75,6 +75,11 @@ paths:
                       type: string
                     deadline:
                       type: string
+                    winner:
+                      type: string
+                    wager:
+                      type: string
+                      format: uint64
               pagination:
                 type: object
                 properties:
@@ -212,6 +217,11 @@ paths:
                     type: string
                   deadline:
                     type: string
+                  winner:
+                    type: string
+                  wager:
+                    type: string
+                    format: uint64
         default:
           description: An unexpected error response.
           schema:
@@ -30836,6 +30846,11 @@ definitions:
               type: string
             deadline:
               type: string
+            winner:
+              type: string
+            wager:
+              type: string
+              format: uint64
       pagination:
         type: object
         properties:
@@ -30887,6 +30902,11 @@ definitions:
             type: string
           deadline:
             type: string
+          winner:
+            type: string
+          wager:
+            type: string
+            format: uint64
   alice.checkers.checkers.QueryGetSystemInfoResponse:
     type: object
     properties:
@@ -30931,6 +30951,11 @@ definitions:
         type: string
       deadline:
         type: string
+      winner:
+        type: string
+      wager:
+        type: string
+        format: uint64
   alice.checkers.checkers.SystemInfo:
     type: object
     properties:

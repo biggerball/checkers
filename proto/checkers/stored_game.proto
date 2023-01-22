@@ -13,5 +13,7 @@ message StoredGame {
   string beforeIndex = 7; // Pertains to the FIFO. Toward head.
   string afterIndex = 8;
   string deadline = 9;
+  string winner = 10;
+  uint64 wager = 11;
 }
 
