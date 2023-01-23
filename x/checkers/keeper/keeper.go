@@ -2,6 +2,7 @@ package keeper
 
 import (
 	"fmt"
+	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 
 	"github.com/tendermint/tendermint/libs/log"
 
@@ -13,6 +14,7 @@ import (
 
 type (
 	Keeper struct {
+		bank       bankkeeper.Keeper
 		cdc        codec.BinaryCodec
 		storeKey   sdk.StoreKey
 		memKey     sdk.StoreKey
@@ -21,6 +23,7 @@ type (
 )
 
 func NewKeeper(
+	bank bankkeeper.Keeper,
 	cdc codec.BinaryCodec,
 	storeKey,
 	memKey sdk.StoreKey,
@@ -33,7 +36,7 @@ func NewKeeper(
 	}
 
 	return &Keeper{
-
+		bank:       bank,
 		cdc:        cdc,
 		storeKey:   storeKey,
 		memKey:     memKey,
